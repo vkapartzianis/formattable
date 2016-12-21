@@ -60,7 +60,8 @@ formatter <- function(.tag, ...) {
         tag(.tag, attrs[!is.na(attrs) & nzchar(attrs)])
       }, values, NULL)
     }
-    copy_dim(x, vapply(tags, doRenderTags, character(1L)))
+    tags.rendered <- strsplit(doRenderTags(tags), "\n")[[1]]
+    copy_dim(x, tags.rendered)
   }, class = c("formatter", "function"))
 }
 
